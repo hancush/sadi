@@ -1,0 +1,105 @@
+<head>
+  <title>
+    {{ story.title()|replace('_', ' ') }} UGC Summary
+  </title>
+
+  <meta charset="UTF-8">
+
+  <style type="text/css">
+    @page {
+      background-color:#333;
+      margin: 0cm 0cm; 
+      padding: 1cm 2cm 1cm 2.15cm;
+      border-left: 50px solid #1cb469;
+      @bottom-right {
+        content: 'page ' counter(page) ' of ' counter(pages);
+        color: gray;
+        font-family: 'Arial Unicode MS';
+        font-size: 70%;
+        margin-top: -50px;
+        margin-right: 30px;
+      }
+      @bottom-left {
+        content: '{{ story.title()|replace('_', ' ') }} UGC summary';
+        color: gray;
+        font-family: 'Arial Unicode MS';
+        font-size: 70%;
+        margin-top: -50px;
+        margin-left: 80px;
+      }
+    }
+    #main{
+      font-family: 'Arial Unicode MS';
+      font-size: 12pt;
+      color: gray;
+    }
+    .head{
+      font-size: 200%;
+      font-weight: bolder;
+      color: #1cb469;
+      text-align: center;
+    }
+    .post{
+      font-size: 130%;
+      font-weight: bold;
+      color: #fff;
+      text-align: left;
+      margin-bottom: 5px;
+    }
+    .notes{
+      text-align: left;
+    }
+    .small{
+      font-size: 90%;
+      color: gray;
+    }
+    img{
+      border: 5px solid white;
+      max-width: 400px;
+      max-height: 400px;
+    }
+    a, a:visited{
+      color: #fff;
+    }
+  </style>
+</head>
+
+<body>
+<center>
+<div id="main">
+<p class="head">UGC in SAM: {{ story.title()|replace('_', ' ') }}</p>
+<br>
+{% if story %}
+  {% for item in results %}
+    {% if item[0] %}
+      <img src='{{ item[0] }}'><br>
+      <p class='post'>{{ item[1].decode('utf-8') }}</p>
+      <p class='notes'>
+      {% for entry in results[item] %}
+        {{ entry[0]|safe }} {{ entry[1] }}<br>
+      {% endfor %}
+      </p><br>
+    {% endif %}
+  {% endfor %}
+  {% for item in results %}
+    {% if not item[0] %}
+      {% if 'created' not in item[1] %}
+        <p class='post'>{{ item[1].decode('utf-8') }}</p>
+        <p class='notes'>
+        {% for entry in results[item] %}
+          {{ entry[0]|safe }} {{ entry[1] }}<br>
+        {% endfor %}
+        </p><br>
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+{% else %}
+  <p class="head">error</p>
+  You did it wrong, Hannah!
+{% endif %}
+</div>
+</center>
+</body>
+
+<footer>
+</footer>
