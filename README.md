@@ -2,7 +2,7 @@
 
 ## SADI: SAM Digest
 
-Sadi is a slash command for SAM Desk users who push updates to Slack. She waits in her Flask app palace on a Heroku cloud until you assign her a story, at which time she retrieves related messages from the SAM bot, then wraps them all up in a shiny digest you can send to the editors who are yelling at you. — Edit
+Sadi is a slash command for SAM Desk users who push updates to Slack. She waits in her Flask app palace on a Heroku cloud until you assign her a story, at which time she retrieves related messages from the SAM bot, then wraps them all up in a shiny digest you can send to the editors who are yelling at you.
 
 ### Dependencies
 
