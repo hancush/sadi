@@ -39,6 +39,3 @@ Set another environment var:
 /sadi [name of SAM story]
 
 [Here’s an example digest](https://github.com/hancush/sadi/blob/master/examples/taiwan_earthquake_report.pdf).
-
-
-git filter-branch --force --index-filter / git rm --cached --ignore-unmatch sadi/credentials.py --prune-empty --tag-name-filter cat -- --all
